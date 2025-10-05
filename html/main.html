@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Code</title>
+    <link rel="stylesheet" href="../styles/pages/main.css">
+</head>
+<body>
+
+    <div id="date-today"></div>
+
+    <div class="container1">
+        <button class="arrow" onclick="decrease(0)">⬇️</button>
+        <span id="case1">1</span>
+        <button class="arrow" onclick="increase(0)">⬆️</button>
+    </div>
+    <div class="container2">
+        <button class="arrow" onclick="decrease(1)">⬇️</button>
+        <span id="case2">1</span>
+        <button class="arrow" onclick="increase(1)">⬆️</button>
+    </div>
+    <div class="container3">
+        <button class="arrow" onclick="decrease(2)">⬇️</button>
+        <span id="case3">1</span>
+        <button class="arrow" onclick="increase(2)">⬆️</button>
+    </div>
+
+    <button onclick="stopTimer()">Stop le timer</button>
+
+</body>
+</html>
+<script src="../js/script.js"></script>
