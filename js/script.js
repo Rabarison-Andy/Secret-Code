@@ -1,20 +1,66 @@
 "use strict";
 
 let seconds = 120;
-let timer = setInterval(timerFunction ,1000);
+let timer = null;
+
+function formatTime(sec) {
+  const m = Math.floor(sec / 60).toString().padStart(2, '0');
+  const s = (sec % 60).toString().padStart(2, '0');
+  return `${m}:${s}`;
+}
+
 function timerFunction() {
-  seconds--;
-  document.getElementById("date-today").textContent = seconds + " secondes";
+  if (seconds > 0) {
+    seconds--;
+    const box = document.getElementById('timer-box');
+    if (box) box.textContent = formatTime(seconds);
+  }
 
   if (seconds === 0) {
     clearInterval(timer);
-    alert("Vous n'avez pas trouver le code à temps 😕")
+    timer = null;
+    alert("Vous n'avez pas trouvé le code à temps 😕");
   }
 }
 
-function stopTimer() {
-  clearTimeout(timer);
+// Démarre le timer au chargement
+function startTimer() {
+  const box = document.getElementById('timer-box');
+  if (box) box.textContent = formatTime(seconds);
+  timer = setInterval(timerFunction, 1000);
 }
+
+function stopTimer() {
+  if (timer) {
+    clearInterval(timer);
+    timer = null;
+  }
+  const btn = document.querySelector('.stop-timer');
+  if (btn) {
+    btn.setAttribute('disabled', '');
+    btn.setAttribute('aria-pressed', 'true');
+    btn.classList.add('stopped');
+    btn.textContent = 'Timer arrêté';
+  }
+  const box = document.getElementById('timer-box');
+  if (box) box.classList.add('stopped');
+}
+
+// Hover accessibility: add aria-label on hover/focus
+function attachStopButtonHandlers() {
+  const btn = document.querySelector('.stop-timer');
+  if (!btn) return;
+  btn.addEventListener('mouseenter', () => btn.setAttribute('aria-label', 'Arrêter le timer'));
+  btn.addEventListener('mouseleave', () => btn.removeAttribute('aria-label'));
+  btn.addEventListener('focus', () => btn.setAttribute('aria-label', 'Arrêter le timer'));
+  btn.addEventListener('blur', () => btn.removeAttribute('aria-label'));
+}
+
+// Start on load
+document.addEventListener('DOMContentLoaded', () => {
+  startTimer();
+  attachStopButtonHandlers();
+});
 
 const values = [1, 1, 1];
 const outputs = [

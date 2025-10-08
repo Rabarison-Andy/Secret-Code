@@ -4,29 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secret Code</title>
+    <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="../styles/pages/main.css">
 </head>
 <body>
+    <div class="flex flex-col items-center justify-center h-100vh text-2xl gap-20 px-20">
+        <div id="timer-wrapper" class="text-center mb-6">
+            <div id="timer-box" class="timer-box text-3xl">00:00</div>
+        </div>
 
-    <div id="date-today"></div>
+        <div class="flex gap-20 items-center">
+            <div class="counter">
+                <button class="arrow text-5xl" onclick="decrease(0)">&darr;</button>
+                <span id="case1" class="value text-5xl">1</span>
+                <button class="arrow text-5xl" onclick="increase(0)">&uarr;</button>
+            </div>
+            <div class="counter">
+                <button class="arrow text-5xl" onclick="decrease(1)">&darr;</button>
+                <span id="case2" class="value text-5xl">1</span>
+                <button class="arrow text-5xl" onclick="increase(1)">&uarr;</button>
+            </div>
+            <div class="counter">
+                <button class="arrow text-5xl" onclick="decrease(2)">&darr;</button>
+                <span id="case3" class="value text-5xl">1</span>
+                <button class="arrow text-5xl" onclick="increase(2)">&uarr;</button>
+            </div>
+        </div>
 
-    <div class="container1">
-        <button class="arrow" onclick="decrease(0)">⬇️</button>
-        <span id="case1">1</span>
-        <button class="arrow" onclick="increase(0)">⬆️</button>
+        <div class="mt-10 max-w-md">
+            <button class="stop-timer bg-primary text-white font-bold text-base px-20 py-10" onclick="stopTimer()">Stop le timer</button>
+        </div>
     </div>
-    <div class="container2">
-        <button class="arrow" onclick="decrease(1)">⬇️</button>
-        <span id="case2">1</span>
-        <button class="arrow" onclick="increase(1)">⬆️</button>
-    </div>
-    <div class="container3">
-        <button class="arrow" onclick="decrease(2)">⬇️</button>
-        <span id="case3">1</span>
-        <button class="arrow" onclick="increase(2)">⬆️</button>
-    </div>
-
-    <button onclick="stopTimer()">Stop le timer</button>
 
 </body>
 </html>

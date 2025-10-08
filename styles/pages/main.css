@@ -1,38 +1,72 @@
-.slidecontainer {
-  width: 100%; /* Width of the outside container */
+/* Page background pour l'application */
+body {
+  min-height: 100vh;
+  margin: 0;
+  background-color: rgba(245, 213, 190, 0.31);
+  color: #222;
+  font-family: var(--font-sans, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* The slider itself */
-.slider {
-  -webkit-appearance: none;  /* Override default CSS styles */
-  appearance: none;
-  width: 100%; /* Full-width */
-  height: 25px; /* Specified height */
-  background: #d3d3d3; /* Grey background */
-  outline: none; /* Remove outline */
-  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-  transition: opacity .2s;
+/* Bouton Stop timer - utilise utilitaires globals pour la couleur, mais ajoute accessibilité */
+.stop-timer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  background: var(--color-primary, #2563eb);
+  color: var(--color-white, #fff);
+  cursor: pointer;
 }
 
-/* Mouse-over effects */
-.slider:hover {
-  opacity: 1; /* Fully shown on mouse-over */
+/* Responsive: bouton plein largeur sur petits écrans */
+@media (max-width: 480px) {
+  .stop-timer {
+    width: 100%;
+  }
 }
 
-/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
-  appearance: none;
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
-  background: #04AA6D; /* Green background */
-  cursor: pointer; /* Cursor on hover */
+/* Timer box (red box, not a button) */
+.timer-box {
+  display: inline-block;
+  padding: 1rem 1.5rem;
+  background: #ff6b6b;
+  color: white;
+  border-radius: 12px;
+  min-width: 160px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 
-.slider::-moz-range-thumb {
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
-  background: #04AA6D; /* Green background */
-  cursor: pointer; /* Cursor on hover */
+/* Bigger arrow/number sizing helpers (if utils don't have exact sizes) */
+.text-5xl { font-size: 3rem; }
+.text-6xl { font-size: 3.75rem; }
+
+/* Stop button hover/focus */
+.stop-timer:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  background: #e05555;
 }
+.stop-timer:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(224,85,85,0.18);
+}
+
+/* Stable counter layout: keep consistent spacing between arrows and value */
+.counter {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+.counter .arrow {
+  margin: 12px 0; /* fixed space above/below arrows */
+}
+.counter .value {
+  margin: 18px 0; /* ensure extra space around values */
+}
+
