@@ -70,3 +70,47 @@ body {
   margin: 18px 0; /* ensure extra space around values */
 }
 
+.timer-box.paused {
+  opacity: 0.5;
+}
+
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  .popup-box {
+    background: #fff;
+    padding: 2rem;
+    max-width: 400px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    animation: popup-appear 0.3s ease-out;
+  }
+  #popup-message {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+  #popup-button {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  #popup-button:hover {
+    background: #1e40af;
+  }
+  @keyframes popup-appear {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
